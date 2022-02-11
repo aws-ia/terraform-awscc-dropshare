@@ -1,0 +1,3 @@
+module "dropshare" {
+  source = "../"
+}

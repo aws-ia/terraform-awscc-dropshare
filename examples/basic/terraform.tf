@@ -1,6 +1,11 @@
 terraform {
   # see https://www.terraform.io/language/settings#specifying-provider-requirements
   required_providers {
+    # see https://registry.terraform.io/providers/hashicorp/aws/latest
+    aws = {
+      source  = "hashicorp/aws"
+      version = "4.0.0"
+    }
 
     # see https://registry.terraform.io/providers/hashicorp/awscc/latest
     awscc = {
