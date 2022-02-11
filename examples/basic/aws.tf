@@ -28,7 +28,7 @@ provider "aws" {
 # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs
 provider "aws" {
   # ACM Certificates must be in `us-east-1` to be accessible to CloudFront
-  alias = "certificates"
+  alias  = "certificates"
   region = "us-east-1"
 
   # configuration for this provider is handled through environment variables

@@ -8,6 +8,7 @@ terraform {
 
       # see https://www.terraform.io/language/modules/develop/providers#provider-aliases-within-modules
       configuration_aliases = [
+        aws,
         aws.certificates
       ]
     }
@@ -20,7 +21,7 @@ terraform {
 
     # see https://registry.terraform.io/providers/hashicorp/random/latest/docs
     random = {
-      source = "hashicorp/random"
+      source  = "hashicorp/random"
       version = "3.1.0"
     }
   }

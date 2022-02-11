@@ -1,8 +1,8 @@
-module "dropshare_aws" {
+module "dropshare" {
   source = "../.."
 
   providers = {
-    aws = aws
+    aws              = aws
     aws.certificates = aws.certificates
   }
 
