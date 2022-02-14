@@ -34,12 +34,13 @@ This section contains the input and output values of this module.
 
 | Name | Description |
 |------|-------------|
+| access\_key\_id | IAM Access Key. |
 | bucket\_id | S3 Bucket ARN. |
 | bucket\_name | S3 Bucket Name. |
-| decrypt\_command\_append | Appended part of Command to decrypt IAM Secret Access Key. |
-| decrypt\_command\_prepend | Prepended part of Command to decrypt IAM Secret Access Key. |
-| iam\_access\_key | AWS IAM Access Key. |
-| iam\_secret\_access\_key | AWS IAM (encrypted) Secret Access Key. |
+| domain\_alias | Domain Alias for CloudFront Distribution. |
+| secret\_key | (encrypted) IAM Secret Key. |
+| secret\_key\_decrypt\_command\_append | Appended part of Command to decrypt IAM Secret Key. |
+| secret\_key\_decrypt\_command\_prepend | Prepended part of Command to decrypt IAM Secret Key. |
 <!-- END_TF_DOCS -->
 
 ## Author Information
