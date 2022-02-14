@@ -1,6 +1,6 @@
-# Dropshare Connection: AWS S3
+# Dropshare Connection - AWS S3
 
-> Terraform Module to create a Dropshare Connection  with AWS S3 and AWS CloudFront.
+> Terraform Module to create resources for a Dropshare Connection with AWS S3 and AWS CloudFront.
 
 ## Table of Contents
 
