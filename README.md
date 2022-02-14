@@ -21,11 +21,11 @@ This section contains the input and output values of this module.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| aws\_iam\_group\_path\_services | IAM Group Path for service accounts | `string` | `"/services/"` | no |
 | bucket\_index\_file | Path to template file to use as Index for Bucket. | `string` | `"templates/index.html"` | no |
 | bucket\_name | Name of the S3 Bucket. | `string` | `""` | no |
 | cloudfront\_zone\_id | ID of the CloudFront Route53 Hosted Zone. | `string` | `"Z2FDTNDATAQYW2"` | no |
 | comment | Comment to assign to relevant resources. | `string` | `"Terraform-managed Resource for Dropshare Connection"` | no |
+| iam\_group\_path | IAM Group Path for Service Accounts. | `string` | `"/services/"` | no |
 | keybase\_user | KeyBase username for use in the `encrypted_secret` output attribute. | `string` | n/a | yes |
 | route53\_record\_subdomain | Subdomain Record to create in the Route53 Hosted Zone. | `string` | n/a | yes |
 | routed53\_zone\_id | ID of the Route53 Hosted Zone. | `string` | n/a | yes |
