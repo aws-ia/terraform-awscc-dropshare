@@ -25,3 +25,12 @@ locals {
 resource "awscc_s3_bucket" "main" {
   bucket_name = local.bucket_name
 }
+
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
+resource "aws_s3_object" "object" {
+  bucket       = awscc_s3_bucket.main.bucket_name
+  content_type = "text/html"
+  etag         = filemd5("${path.module}/${var.bucket_index_file}")
+  key          = basename("${path.module}/${var.bucket_index_file}")
+  source       = "${path.module}/${var.bucket_index_file}"
+}
