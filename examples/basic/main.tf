@@ -12,6 +12,7 @@ module "dropshare" {
   }
 
   bucket_name              = "operatehappy-dropshare-aws"
+  keybase_user             = "operatehappy"
   routed53_zone_id         = "Z022183919I9SRBSJMSTV"
   route53_record_subdomain = "operatehappy-dropshare-aws"
 }
