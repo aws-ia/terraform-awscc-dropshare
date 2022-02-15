@@ -10,6 +10,13 @@ provider "awscc" {
   #      terraform_module  = "operatehappy/terraform-module-awscc-dropshare"
   #    }
   #  }
+
+  # TODO: verify IDs
+  user_agent = [{
+    product_name    = "terraform-awscc-dropshare"
+    product_version = "0.1.0"
+    comment         = "V1/AWS-D69B4015/<github repo id>"
+  }]
 }
 
 # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs
