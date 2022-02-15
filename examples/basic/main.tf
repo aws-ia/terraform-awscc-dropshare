@@ -11,10 +11,12 @@ module "dropshare" {
     aws.certificates = aws.certificates
   }
 
-  bucket_name              = "operatehappy-dropshare-aws"
-  keybase_user             = "operatehappy"
-  routed53_zone_id         = "Z022183919I9SRBSJMSTV"
-  route53_record_subdomain = "operatehappy-dropshare-aws"
+  bucket_name               = "operatehappy-dropshare-aws"
+  keybase_user              = "operatehappy"
+  lock_policy_to_ip_address = true
+  caller_ip_address         = "127.0.0.1/0"
+  routed53_zone_id          = "Z022183919I9SRBSJMSTV"
+  route53_record_subdomain  = "operatehappy-dropshare-aws"
 }
 
 # see https://www.terraform.io/language/values/outputs
