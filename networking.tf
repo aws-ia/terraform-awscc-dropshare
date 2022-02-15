@@ -18,7 +18,7 @@ resource "aws_acm_certificate" "main" {
 
   # see https://www.terraform.io/language/meta-arguments/lifecycle
   lifecycle {
-    # It is recommended to allow replacement of in-use certificates
+    # it is recommended to allow replacement of in-use certificates
     create_before_destroy = true
   }
 }
@@ -37,10 +37,14 @@ resource "aws_route53_record" "validation" {
   # allow overwriting of original value, in case of re-issuance of a certificate
   allow_overwrite = true
   name            = each.value.name
-  records         = [each.value.record]
-  ttl             = 60
-  type            = each.value.type
-  zone_id         = data.awscc_route53_hosted_zone.main.id
+
+  records = [
+    each.value.record
+  ]
+
+  ttl     = 60
+  type    = each.value.type
+  zone_id = data.awscc_route53_hosted_zone.main.id
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation
@@ -58,7 +62,7 @@ resource "aws_acm_certificate_validation" "validation" {
 # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_cloudfront_origin_access_identity
 resource "awscc_cloudfront_cloudfront_origin_access_identity" "main" {
   cloudfront_origin_access_identity_config = {
-    comment = var.comment
+    comment = var.cloudfront_comment
   }
 }
 
@@ -69,7 +73,7 @@ resource "awscc_cloudfront_distribution" "main" {
       aws_acm_certificate.main.domain_name
     ]
 
-    comment = var.comment
+    comment = var.cloudfront_comment
 
     default_cache_behavior = {
       allowed_methods = [
@@ -84,8 +88,7 @@ resource "awscc_cloudfront_distribution" "main" {
         "GET",
       ]
 
-      compress = true
-
+      compress               = true
       smooth_streaming       = false
       target_origin_id       = "operatehappy-dropshare-aws.s3.us-west-1.amazonaws.com"
       viewer_protocol_policy = "https-only"
@@ -121,7 +124,7 @@ resource "awscc_cloudfront_distribution" "main" {
 
     viewer_certificate = {
       acm_certificate_arn      = aws_acm_certificate.main.id
-      minimum_protocol_version = "TLSv1.2_2021"
+      minimum_protocol_version = var.cloudfront_minimum_protocol_version
       ssl_support_method       = "sni-only"
     }
   }

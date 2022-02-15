@@ -17,9 +17,9 @@ variable "cloudfront_zone_id" {
   default     = "Z2FDTNDATAQYW2"
 }
 
-variable "comment" {
+variable "cloudfront_comment" {
   type        = string
-  description = "Comment to assign to relevant resources."
+  description = "Comment to assign to CloudFront resources."
   default     = "Terraform-managed Resource for Dropshare Connection"
 }
 
