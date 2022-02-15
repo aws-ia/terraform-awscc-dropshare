@@ -4,7 +4,7 @@ terraform {
     # see https://registry.terraform.io/providers/hashicorp/aws/latest
     aws = {
       source  = "hashicorp/aws"
-      version = "4.0.0"
+      version = ">= 4.0.0, < 4.1.0"
 
       # see https://www.terraform.io/language/modules/develop/providers#provider-aliases-within-modules
       configuration_aliases = [
@@ -16,7 +16,7 @@ terraform {
     # see https://registry.terraform.io/providers/hashicorp/awscc/latest
     awscc = {
       source  = "hashicorp/awscc"
-      version = ">= 0.11.0"
+      version = ">= 0.11.0, < 0.12.0"
     }
 
     # see https://registry.terraform.io/providers/hashicorp/random/latest/docs
