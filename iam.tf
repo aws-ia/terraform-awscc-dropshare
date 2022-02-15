@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "main" {
       "${aws_s3_bucket.main.arn}/*"
     ]
 
-
+    # see https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceip
     condition {
       test     = "IpAddress"
       variable = "aws:SourceIp"

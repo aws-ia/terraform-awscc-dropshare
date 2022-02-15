@@ -48,7 +48,7 @@ resource "aws_route53_record" "validation" {
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation
-resource "aws_acm_certificate_validation" "validation" {
+resource "aws_acm_certificate_validation" "main" {
   # ACM Certificates must be in `us-east-1` to be accessible to CloudFront
   provider = aws.certificates
 
@@ -81,6 +81,7 @@ resource "awscc_cloudfront_distribution" "main" {
         "GET",
       ]
 
+      # TODO
       #cache_policy_id = "658327ea-f89d-4fab-a63d-7e88639e58f6"
 
       cached_methods = [
@@ -123,7 +124,8 @@ resource "awscc_cloudfront_distribution" "main" {
     price_class = "PriceClass_100"
 
     viewer_certificate = {
-      acm_certificate_arn      = aws_acm_certificate.main.id
+      # use `aws_acm_certificate_validation` to avoid race conditions with validation
+      acm_certificate_arn      = aws_acm_certificate_validation.main.certificate_arn
       minimum_protocol_version = var.cloudfront_minimum_protocol_version
       ssl_support_method       = "sni-only"
     }

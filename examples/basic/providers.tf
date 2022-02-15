@@ -11,11 +11,14 @@ provider "awscc" {
   #    }
   #  }
 
-  # TODO: @drewmullen verify IDs
   user_agent = [{
-    product_name    = "terraform-awscc-dropshare"
+    product_name    = "terraform-module-awscc-dropshare"
     product_version = "0.1.0"
-    comment         = "V1/AWS-D69B4015/<github repo id>"
+
+    # the ID can be retrieved using `gh`: `gh api repos/aws-ia/terraform-module-awscc-dropshare | jq .id`
+    # see https://github.com/aws-ia/standards-terraform/blob/main/content/faq/_index.en.md#what-is-the-user_agent
+    # note: the above link is currently only accessible to members of the `aws-ia` GitHub Organization
+    comment         = "V1/AWS-D69B4015/459516829"
   }]
 }
 
