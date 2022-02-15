@@ -88,13 +88,13 @@ data "http" "caller_public_ip_address" {
   url = var.iam_ip_address_retrieval_service
 
   request_headers = {
-    Accept = "text/html"
+    Accept = "text/plain"
   }
 }
 
 locals {
   # use `var.caller_ip_address` if provided, else use caller's public IP address
-  caller_ip_address = var.caller_ip_address != "" ? var.caller_ip_address : data.http.caller_public_ip_address.body
+  caller_ip_address = var.caller_ip_address != "" ? var.caller_ip_address : tostring(data.http.caller_public_ip_address.body)
 
   # if `var.lock_policy_to_ip_address` is set to true, set to user-provided IP address
   ip_address_constraint = var.lock_policy_to_ip_address ? local.caller_ip_address : "0.0.0.0/0"

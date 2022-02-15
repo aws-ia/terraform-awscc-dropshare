@@ -33,23 +33,33 @@ resource "aws_s3_bucket_acl" "main" {
   acl    = "private"
 }
 
-# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration
-resource "aws_s3_bucket_lifecycle_configuration" "main" {
-  bucket = aws_s3_bucket.main.id
-
-  rule {
-    id     = "default"
-    status = "Enabled"
-
-    # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/s3_bucket#nested-schema-for-lifecycle_configurationrulestransitions
-    transition {
-      days          = 0
-      storage_class = var.bucket_storage_class
-    }
-
-    # TODO add more sensible options
-  }
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block
+resource "aws_s3_bucket_public_access_block" "example" {
+  bucket              = aws_s3_bucket.main.id
+  block_public_acls   = true
+  block_public_policy = true
 }
+
+## see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration
+#resource "aws_s3_bucket_lifecycle_configuration" "main" {
+#  bucket = aws_s3_bucket.main.id
+#
+#  rule {
+#    id = "default"
+#
+#    expiration {
+#      days = 90
+#    }
+#
+#    status = "Enabled"
+#
+#    # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/s3_bucket#nested-schema-for-lifecycle_configurationrulestransitions
+#    transition {
+#      days          = 0
+#      storage_class = var.bucket_storage_class
+#    }
+#  }
+#}
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
 #resource "aws_s3_object" "main" {
