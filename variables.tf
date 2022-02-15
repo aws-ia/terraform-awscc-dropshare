@@ -46,6 +46,12 @@ variable "iam_group_path" {
   default     = "/services/"
 }
 
+variable "iam_ip_address_retrieval_service" {
+  type        = string
+  description = "URL for (Public) IP Address Retrieval Service"
+  default     = "https://icanhazip.com/"
+}
+
 variable "keybase_user" {
   type        = string
   description = "KeyBase username for use in the `encrypted_secret` output attribute."

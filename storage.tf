@@ -26,7 +26,7 @@ locals {
 resource "awscc_s3_bucket" "main" {
   bucket_name = local.bucket_name
 
-  // TODO add more sensible options
+  # TODO add more sensible options
   transition {
     days          = 0
     storage_class = var.bucket_storage_class
