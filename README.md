@@ -9,6 +9,7 @@
   - [Usage](#usage)
     - [Inputs](#inputs)
     - [Outputs](#outputs)
+  - [Notes](#notes)
   - [Author Information](#author-information)
   - [License](#license)
 
@@ -29,6 +30,7 @@ This section contains the input and output values of this module.
 | cloudfront\_minimum\_protocol\_version | The minimum version of the TLS protocol that you want CloudFront to use for HTTPS connections. | `string` | `"TLSv1.2_2021"` | no |
 | cloudfront\_zone\_id | ID of the CloudFront Route53 Hosted Zone. | `string` | `"Z2FDTNDATAQYW2"` | no |
 | iam\_group\_path | IAM Group Path for Service Accounts. | `string` | `"/services/"` | no |
+| iam\_ip\_address\_retrieval\_service | URL for (Public) IP Address Retrieval Service | `string` | `"https://icanhazip.com/"` | no |
 | keybase\_user | KeyBase username for use in the `encrypted_secret` output attribute. | `string` | n/a | yes |
 | lock\_policy\_to\_ip\_address | Toggle to enable constraining of IAM Policy to user-provided IP Address. | `bool` | `true` | no |
 | route53\_record\_subdomain | Subdomain Record to create in the Route53 Hosted Zone. | `string` | n/a | yes |
@@ -46,6 +48,18 @@ This section contains the input and output values of this module.
 | secret\_key\_decrypt\_command\_append | Appended part of Command to decrypt IAM Secret Key. |
 | secret\_key\_decrypt\_command\_prepend | Prepended part of Command to decrypt IAM Secret Key. |
 <!-- END_TF_DOCS -->
+
+## Notes
+
+This section contains notes for this module.
+
+### Public IP Retrieval Services
+
+In [iam.tf](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/iam.tf), an [HTTP data source](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) is used to retrieve the caller's public IP address. This IP address is then used as a constraint for the module-created IAM policy.
+
+Allowing a remote service to provide a string for constraining IAM Access to a specific source IP provides a limited, but non-zero security concern.
+
+Should you wish to provide a different IP retrieval service, you can update the `iam_ip_address_retrieval_service` variable with the URL to a service you trust. See [variables.tf](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/variables.tf) and [iam.tf](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/iam.tf) for more information.
 
 ## Author Information
 
