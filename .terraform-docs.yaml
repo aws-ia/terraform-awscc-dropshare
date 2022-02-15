@@ -15,12 +15,18 @@ output:
 # see https://terraform-docs.io/user-guide/configuration/settings/
 settings:
   anchor: false
+  color: true
   default: true
   escape: true
-  indent: 3
+  indent: 2
   required: true
   sensitive: true
   type: true
+
+# see https://terraform-docs.io/user-guide/configuration/sort/
+sort:
+  enabled: true
+  by: required
 
 # see https://terraform-docs.io/user-guide/configuration/sections/
 sections:
