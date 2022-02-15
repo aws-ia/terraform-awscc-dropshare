@@ -4,6 +4,10 @@ data "http" "caller_public_ip_address" {
   # TODO: check for AWS-owned service we can use for this.
   # this value will be available in data.http.caller_public_ip_address.body
   url = "https://icanhazip.com/"
+
+  request_headers = {
+    Accept = "text/html"
+  }
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document
