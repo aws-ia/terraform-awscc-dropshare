@@ -43,3 +43,23 @@ variable "route53_record_subdomain" {
   type        = string
   description = "Subdomain Record to create in the Route53 Hosted Zone."
 }
+
+variable "lock_policy_to_ip_address" {
+  type        = bool
+  description = "Toggle to enable constraining of IAM Policy to user-provided IP Address."
+  default     = true
+}
+
+variable "caller_ip_address" {
+  type        = string
+  description = "IP Address to constrain IAM Policy to. If left empty, this will be replaced with the caller's public IP address."
+  default     = ""
+}
+
+locals {
+  # use `var.caller_ip_address` if provided, else use caller's public IP address
+  caller_ip_address = var.caller_ip_address != "" ? var.caller_ip_address : data.http.caller_public_ip_address.body
+
+  # if `var.lock_policy_to_ip_address` is set to true, set to user-provided IP address
+  ip_address_constraint = var.lock_policy_to_ip_address ? local.caller_ip_address : "0.0.0.0/0"
+}
