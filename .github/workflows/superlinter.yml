@@ -21,6 +21,7 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: "main"
           DISABLE_ERRORS: false
+          TERRAFORM_TFLINT_CONFIG_FILE: ".tflint.hcl"
           VALIDATE_BASH: true
           VALIDATE_JSON: true
           VALIDATE_MD: true

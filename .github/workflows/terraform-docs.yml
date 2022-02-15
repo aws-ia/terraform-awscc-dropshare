@@ -23,4 +23,4 @@ jobs:
         with:
           config-file: "../../.terraform-docs.yml"
           git-push: "true"
-          working-directory: "./examples/basic""
+          working-directory: "./examples/basic"
