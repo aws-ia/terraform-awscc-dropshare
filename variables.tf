@@ -10,6 +10,23 @@ variable "bucket_name" {
   default     = ""
 }
 
+variable "bucket_storage_class" {
+  type        = string
+  description = "The class of storage used to store the object."
+  default     = "ONEZONE_IA"
+
+  validation {
+    condition     = can(contains(["STANDARD", "REDUCED_REDUNDANCY", "STANDARD_IA", "ONEZONE_IA", "INTELLIGENT_TIERING"], var.bucket_storage_class))
+    error_message = "`bucket_storage_class` must be one of \"STANDARD\", \"REDUCED_REDUNDANCY\", \"STANDARD_IA\", \"ONEZONE_IA\", or \"INTELLIGENT_TIERING\"."
+  }
+}
+
+variable "cloudfront_minimum_protocol_version" {
+  type        = string
+  description = "The minimum version of the TLS protocol that you want CloudFront to use for HTTPS connections."
+  default     = "TLSv1.2_2021"
+}
+
 # see https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-aliastarget.html#aws-properties-route53-aliastarget-properties
 variable "cloudfront_zone_id" {
   type        = string

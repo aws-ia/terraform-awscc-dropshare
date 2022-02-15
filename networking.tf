@@ -90,7 +90,7 @@ resource "awscc_cloudfront_distribution" "main" {
 
       compress               = true
       smooth_streaming       = false
-      target_origin_id       = "operatehappy-dropshare-aws.s3.us-west-1.amazonaws.com"
+      target_origin_id       = awscc_s3_bucket.main.regional_domain_name
       viewer_protocol_policy = "https-only"
     }
 

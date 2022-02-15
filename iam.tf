@@ -9,12 +9,15 @@ data "http" "caller_public_ip_address" {
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document
 data "aws_iam_policy_document" "main" {
   statement {
+    sid    = "0"
     effect = "Allow"
+
     actions = [
       "s3:GetObject"
     ]
 
     resources = [
+      awscc_s3_bucket.main.bucket_name,
       "${awscc_s3_bucket.main.bucket_name}/*"
     ]
 

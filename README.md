@@ -23,10 +23,14 @@ This section contains the input and output values of this module.
 |------|-------------|------|---------|:--------:|
 | bucket\_index\_file | Path to template file to use as Index for Bucket. | `string` | `"templates/index.html"` | no |
 | bucket\_name | Name of the S3 Bucket. | `string` | `""` | no |
+| bucket\_storage\_class | The class of storage used to store the object. | `string` | `"ONEZONE_IA"` | no |
+| caller\_ip\_address | IP Address to constrain IAM Policy to. If left empty, this will be replaced with the caller's public IP address. | `string` | `""` | no |
+| cloudfront\_comment | Comment to assign to CloudFront resources. | `string` | `"Terraform-managed Resource for Dropshare Connection"` | no |
+| cloudfront\_minimum\_protocol\_version | The minimum version of the TLS protocol that you want CloudFront to use for HTTPS connections. | `string` | `"TLSv1.2_2021"` | no |
 | cloudfront\_zone\_id | ID of the CloudFront Route53 Hosted Zone. | `string` | `"Z2FDTNDATAQYW2"` | no |
-| comment | Comment to assign to relevant resources. | `string` | `"Terraform-managed Resource for Dropshare Connection"` | no |
 | iam\_group\_path | IAM Group Path for Service Accounts. | `string` | `"/services/"` | no |
 | keybase\_user | KeyBase username for use in the `encrypted_secret` output attribute. | `string` | n/a | yes |
+| lock\_policy\_to\_ip\_address | Toggle to enable constraining of IAM Policy to user-provided IP Address. | `bool` | `true` | no |
 | route53\_record\_subdomain | Subdomain Record to create in the Route53 Hosted Zone. | `string` | n/a | yes |
 | routed53\_zone\_id | ID of the Route53 Hosted Zone. | `string` | n/a | yes |
 
