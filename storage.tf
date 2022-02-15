@@ -17,20 +17,14 @@ resource "random_pet" "bucket_name" {
 
 # see https://www.terraform.io/language/values/locals
 locals {
-  # TODO: add resource "random_string" "suffix"
   # use randomly generated string for Bucket, if `var.bucket_name` was left empty
-  bucket_name = length(var.bucket_name) != 0 ? var.bucket_name : random_pet.bucket_name.id
+  bucket_name = length(var.bucket_name) != 0 ? var.bucket_name : "${random_pet.bucket_name.id}-${random_string.suffix.result}"
 }
 
 # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/s3_bucket
 resource "awscc_s3_bucket" "main" {
   bucket_name = local.bucket_name
 
-  # TODO add more sensible options
-  transition {
-    days          = 0
-    storage_class = var.bucket_storage_class
-  }
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object

@@ -2,7 +2,6 @@
 # see `Notes` in `README.md` for security implications
 # see https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http
 data "http" "caller_public_ip_address" {
-  # TODO: check for AWS-owned service we can use for this.
   # this value will be available in data.http.caller_public_ip_address.body
   url = var.iam_ip_address_retrieval_service
 

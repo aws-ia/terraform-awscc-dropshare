@@ -3,15 +3,15 @@ provider "awscc" {
   # configuration for this provider is handled through environment variables
   # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs#environment-variables
 
-  # TODO: add default_tags, once supported
+  # TODO @ksatirli: add default_tags, once supported
   #  default_tags {
   #    tags = {
   #      terraform_managed = "true"
-  #      terraform_module  = "operatehappy/terraform-module-awscc-dropshare"
+  #      terraform_module  = "aws-ia/terraform-module-awscc-dropshare"
   #    }
   #  }
 
-  # TODO: verify IDs
+  # TODO: @drewmullen verify IDs
   user_agent = [{
     product_name    = "terraform-awscc-dropshare"
     product_version = "0.1.0"
