@@ -13,7 +13,11 @@ data "aws_iam_policy_document" "main" {
     effect = "Allow"
 
     actions = [
-      "s3:GetObject"
+      "s3:PutObject",
+      "s3:GetObjectAcl",
+      "s3:GetObject",
+      "s3:ListBucket",
+      "s3:DeleteObject"
     ]
 
     resources = [
@@ -21,9 +25,20 @@ data "aws_iam_policy_document" "main" {
       "${awscc_s3_bucket.main.bucket_name}/*"
     ]
 
+    condition {
+      test     = "IpAddress"
+      variable = "aws:SourceIp"
+
+      values = [
+        local.ip_address_constraint
+      ]
+    }
+
     principals {
-      type        = "AWS"
-      identifiers = [awscc_cloudfront_cloudfront_origin_access_identity.main.id]
+      type = "AWS"
+      identifiers = [
+        awscc_cloudfront_cloudfront_origin_access_identity.main.id
+      ]
     }
   }
 }
