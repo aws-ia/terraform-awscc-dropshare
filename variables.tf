@@ -50,7 +50,7 @@ variable "iam_group_path" {
 variable "iam_ip_address_retrieval_service" {
   type        = string
   description = "URL for (Public) IP Address Retrieval Service"
-  default     = "https://icanhazip.com/"
+  default     = "https://checkip.amazonaws.com/"
 }
 
 variable "keybase_user" {

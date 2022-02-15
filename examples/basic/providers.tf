@@ -24,6 +24,11 @@ provider "aws" {
   # configuration for this provider is handled through environment variables
   # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs#environment-variables
 
+  # set this to the region you want to create the S3 Bucket in
+  region = "us-west-1"
+
+  # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs#default_tags
+  # also see https://learn.hashicorp.com/tutorials/terraform/aws-default-tags
   default_tags {
     tags = {
       terraform_managed = "true"
@@ -41,6 +46,8 @@ provider "aws" {
   # configuration for this provider is handled through environment variables
   # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs#environment-variables
 
+  # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs#default_tags
+  # also see https://learn.hashicorp.com/tutorials/terraform/aws-default-tags
   default_tags {
     tags = {
       terraform_managed = "true"
