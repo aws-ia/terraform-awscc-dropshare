@@ -17,6 +17,8 @@
 
 This section contains the input and output values of this module.
 
+For examples, see the [/examples](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/examples/) directory.
+
 <!-- BEGIN_TF_DOCS -->
 ### Inputs
 
