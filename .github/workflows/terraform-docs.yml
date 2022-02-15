@@ -16,11 +16,12 @@ jobs:
         uses: terraform-docs/gh-actions@v0.11.0
         with:
           config-file: ".terraform-docs.yaml"
-          git-push: "true"
+          git-push: true
 
       - name: Render documentation for `basic` example and push changes back to branch
         uses: terraform-docs/gh-actions@v0.11.0
         with:
           config-file: "../../.terraform-docs.yaml"
-          git-push: "true"
+          output-file: "README.md"
+          git-push: true
           working-dir: "./examples/basic"
