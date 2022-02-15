@@ -1,13 +1,13 @@
-# retrieve caller's public IP address by querying remote service
-# see `Notes` in `README.md` for security implications
-# see https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http
-data "http" "caller_public_ip_address" {
-  # this value will be available in data.http.caller_public_ip_address.body
-  url = var.iam_ip_address_retrieval_service
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user
+resource "aws_iam_user" "main" {
+  name = aws_s3_bucket.main.id
+  path = var.iam_group_path
+}
 
-  request_headers = {
-    Accept = "text/html"
-  }
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key
+resource "aws_iam_access_key" "main" {
+  user    = aws_iam_user.main.name
+  pgp_key = "keybase:${var.keybase_user}"
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document
@@ -25,9 +25,10 @@ data "aws_iam_policy_document" "main" {
     ]
 
     resources = [
-      awscc_s3_bucket.main.bucket_name,
-      "${awscc_s3_bucket.main.bucket_name}/*"
+      aws_s3_bucket.main.arn,
+      "${aws_s3_bucket.main.arn}/*"
     ]
+
 
     condition {
       test     = "IpAddress"
@@ -47,14 +48,9 @@ data "aws_iam_policy_document" "main" {
   }
 }
 
-# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user
-resource "aws_iam_user" "main" {
-  name = awscc_s3_bucket.main.bucket_name
-  path = var.iam_group_path
-}
-
-# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key
-resource "aws_iam_access_key" "main" {
-  user    = aws_iam_user.main.name
-  pgp_key = "keybase:${var.keybase_user}"
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy
+resource "aws_iam_user_policy" "main" {
+  policy = data.aws_iam_policy_document.main.json
+  name   = aws_s3_bucket.main.id
+  user   = aws_iam_user.main.name
 }

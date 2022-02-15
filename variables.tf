@@ -80,6 +80,18 @@ variable "caller_ip_address" {
   default     = ""
 }
 
+# retrieve caller's public IP address by querying remote service
+# see `Notes` in `README.md` for security implications
+# see https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http
+data "http" "caller_public_ip_address" {
+  # this value will be available in data.http.caller_public_ip_address.body
+  url = var.iam_ip_address_retrieval_service
+
+  request_headers = {
+    Accept = "text/html"
+  }
+}
+
 locals {
   # use `var.caller_ip_address` if provided, else use caller's public IP address
   caller_ip_address = var.caller_ip_address != "" ? var.caller_ip_address : data.http.caller_public_ip_address.body
