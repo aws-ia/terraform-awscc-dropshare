@@ -24,6 +24,9 @@ For examples, see the [/examples](https://github.com/aws-ia/terraform-module-aws
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| keybase\_user | KeyBase username for use in the `encrypted_secret` output attribute. | `string` | n/a | yes |
+| route53\_record\_subdomain | Subdomain Record to create in the Route53 Hosted Zone. | `string` | n/a | yes |
+| routed53\_zone\_id | ID of the Route53 Hosted Zone. | `string` | n/a | yes |
 | bucket\_index\_file | Path to template file to use as Index for Bucket. | `string` | `"templates/index.html"` | no |
 | bucket\_name | Name of the S3 Bucket. | `string` | `""` | no |
 | bucket\_storage\_class | The class of storage used to store the object. | `string` | `"ONEZONE_IA"` | no |
@@ -33,10 +36,7 @@ For examples, see the [/examples](https://github.com/aws-ia/terraform-module-aws
 | cloudfront\_zone\_id | ID of the CloudFront Route53 Hosted Zone. | `string` | `"Z2FDTNDATAQYW2"` | no |
 | iam\_group\_path | IAM Group Path for Service Accounts. | `string` | `"/services/"` | no |
 | iam\_ip\_address\_retrieval\_service | URL for (Public) IP Address Retrieval Service | `string` | `"https://icanhazip.com/"` | no |
-| keybase\_user | KeyBase username for use in the `encrypted_secret` output attribute. | `string` | n/a | yes |
 | lock\_policy\_to\_ip\_address | Toggle to enable constraining of IAM Policy to user-provided IP Address. | `bool` | `true` | no |
-| route53\_record\_subdomain | Subdomain Record to create in the Route53 Hosted Zone. | `string` | n/a | yes |
-| routed53\_zone\_id | ID of the Route53 Hosted Zone. | `string` | n/a | yes |
 
 ### Outputs
 
