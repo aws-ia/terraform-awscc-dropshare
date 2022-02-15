@@ -11,14 +11,15 @@ resource "random_string" "suffix" {
 
 # see https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet
 resource "random_pet" "bucket_name" {
-  length = 3
-  prefix = random_string.suffix.result
+  length    = 3
+  prefix    = random_string.suffix.result
+  separator = "-"
 }
 
 # see https://www.terraform.io/language/values/locals
 locals {
   # use randomly generated string for Bucket, if `var.bucket_name` was left empty
-  bucket_name = length(var.bucket_name) != 0 ? var.bucket_name : "${random_pet.bucket_name.id}-${random_string.suffix.result}"
+  bucket_name = length(var.bucket_name) != 0 ? var.bucket_name : "${random_pet.bucket_name.id}"
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket

@@ -35,7 +35,7 @@ provider "aws" {
   default_tags {
     tags = {
       terraform_managed = "true"
-      terraform_module  = "operatehappy/terraform-module-awscc-dropshare"
+      terraform_module  = "aws-ia/terraform-module-awscc-dropshare"
     }
   }
 }
@@ -54,7 +54,7 @@ provider "aws" {
   default_tags {
     tags = {
       terraform_managed = "true"
-      terraform_module  = "operatehappy/terraform-module-awscc-dropshare"
+      terraform_module  = "aws-ia/terraform-module-awscc-dropshare"
     }
   }
 }

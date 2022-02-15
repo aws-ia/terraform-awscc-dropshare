@@ -65,7 +65,7 @@ Should you wish to provide a different IP retrieval service, you can update the 
 
 ## Author Information
 
-This repository is maintained by the contributors listed on [GitHub](https://github.com/operatehappy/terraform-module-awscc-dropshare/graphs/contributors).
+This repository is maintained by the contributors listed on [GitHub](https://github.com/aws-ia/terraform-module-awscc-dropshare/graphs/contributors).
 
 ## License
 
