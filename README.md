@@ -35,7 +35,7 @@ For examples, see the [/examples](https://github.com/aws-ia/terraform-module-aws
 | cloudfront\_minimum\_protocol\_version | The minimum version of the TLS protocol that you want CloudFront to use for HTTPS connections. | `string` | `"TLSv1.2_2021"` | no |
 | cloudfront\_zone\_id | ID of the CloudFront Route53 Hosted Zone. | `string` | `"Z2FDTNDATAQYW2"` | no |
 | iam\_group\_path | IAM Group Path for Service Accounts. | `string` | `"/services/"` | no |
-| iam\_ip\_address\_retrieval\_service | URL for (Public) IP Address Retrieval Service | `string` | `"https://icanhazip.com/"` | no |
+| iam\_ip\_address\_retrieval\_service | URL for (Public) IP Address Retrieval Service | `string` | `"https://checkip.amazonaws.com/"` | no |
 | lock\_policy\_to\_ip\_address | Toggle to enable constraining of IAM Policy to user-provided IP Address. | `bool` | `true` | no |
 
 ### Outputs

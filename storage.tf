@@ -21,22 +21,45 @@ locals {
   bucket_name = length(var.bucket_name) != 0 ? var.bucket_name : "${random_pet.bucket_name.id}-${random_string.suffix.result}"
 }
 
-# see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/s3_bucket
-resource "awscc_s3_bucket" "main" {
-  bucket_name = local.bucket_name
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
+resource "aws_s3_bucket" "main" {
+  bucket = local.bucket_name
+}
 
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_acl
+resource "aws_s3_bucket_acl" "main" {
+  bucket = aws_s3_bucket.main.id
+  acl    = "private"
+}
+
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration
+resource "aws_s3_bucket_lifecycle_configuration" "main" {
+  bucket = aws_s3_bucket.main.id
+
+  rule {
+    id     = "default"
+    status = "Enabled"
+
+    # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/s3_bucket#nested-schema-for-lifecycle_configurationrulestransitions
+    transition {
+      days          = 0
+      storage_class = var.bucket_storage_class
+    }
+
+    # TODO add more sensible options
+  }
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
-resource "aws_s3_object" "object" {
-  bucket = awscc_s3_bucket.main.bucket_name
-
-  # separate file name (and extension) from full path of the index file
-  key = basename("${path.module}/${var.bucket_index_file}")
-
-  # generate an acceptable ETag for the index file
-  etag = filemd5("${path.module}/${var.bucket_index_file}")
-
-  content_type = "text/html"
-  source       = "${path.module}/${var.bucket_index_file}"
-}
+#resource "aws_s3_object" "main" {
+#  bucket = aws_s3_bucket.main.arn
+#
+#  # separate file name (and extension) from full path of the index file
+#  key = basename("${path.module}/${var.bucket_index_file}")
+#
+#  # generate an acceptable ETag for the index file
+#  etag = filemd5("${path.module}/${var.bucket_index_file}")
+#
+#  content_type = "text/html"
+#  source       = "${path.module}/${var.bucket_index_file}"
+#}

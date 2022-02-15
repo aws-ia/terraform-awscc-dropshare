@@ -91,7 +91,7 @@ resource "awscc_cloudfront_distribution" "main" {
 
       compress               = true
       smooth_streaming       = false
-      target_origin_id       = awscc_s3_bucket.main.regional_domain_name
+      target_origin_id       = aws_s3_bucket.main.bucket_regional_domain_name
       viewer_protocol_policy = "https-only"
     }
 
@@ -104,8 +104,8 @@ resource "awscc_cloudfront_distribution" "main" {
       {
         connection_attempts = 3
         connection_timeout  = 10
-        domain_name         = awscc_s3_bucket.main.regional_domain_name
-        id                  = awscc_s3_bucket.main.regional_domain_name
+        domain_name         = aws_s3_bucket.main.bucket_regional_domain_name
+        id                  = aws_s3_bucket.main.bucket_regional_domain_name
 
         origin_shield = {
           enabled = false
