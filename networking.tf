@@ -130,6 +130,19 @@ resource "awscc_cloudfront_distribution" "main" {
   }
 }
 
+# see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_cache_policy
+#resource "awscc_cloudfront_cache_policy" "main" {
+#  cache_policy_config = {
+#    default_ttl                                     = ""
+#    max_ttl                                         = ""
+#    min_ttl                                         = ""
+#    name                                            = "TODO"
+#    parameters_in_cache_key_and_forwarded_to_origin = {
+#      cookies_config =
+#    }
+#  }
+#}
+
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
 resource "aws_route53_record" "a" {
   zone_id = data.awscc_route53_hosted_zone.main.id
