@@ -6,12 +6,28 @@
 
 - [Dropshare Connection: AWS S3](#dropshare-connection-aws-s3)
   - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
   - [Usage](#usage)
     - [Inputs](#inputs)
     - [Outputs](#outputs)
   - [Notes](#notes)
   - [Author Information](#author-information)
   - [License](#license)
+
+## Overview
+
+```mermaid
+  graph TD;
+    dns_a[DNS Record, type A] --> tls;
+    dns_aaaa[DNS Record, type AAAA] --> tls;
+    tls[TLS Certificate] --> cloudfront;
+
+    cloudfront[CloudFront Distribution];
+
+    bucket[S3 Bucket] --> cloudfront;
+
+    user[IAM User] --> bucket;
+```
 
 ## Usage
 

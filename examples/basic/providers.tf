@@ -15,10 +15,10 @@ provider "awscc" {
     product_name    = "terraform-module-awscc-dropshare"
     product_version = "0.1.0"
 
-    # the ID can be retrieved using `gh`: `gh api repos/aws-ia/terraform-module-awscc-dropshare | jq .id`
+    # the ID can be retrieved using `gh`: `gh api repos/aws-ia/terraform-awscc-dropshare | jq .id`
     # see https://github.com/aws-ia/standards-terraform/blob/main/content/faq/_index.en.md#what-is-the-user_agent
     # note: the above link is currently only accessible to members of the `aws-ia` GitHub Organization
-    comment = "V1/AWS-D69B4015/459516829"
+    comment = "V1/AWS-D69B4015/459237564"
   }]
 }
 
