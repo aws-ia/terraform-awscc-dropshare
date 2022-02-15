@@ -41,3 +41,6 @@ provider "aws" {
     }
   }
 }
+
+# see https://registry.terraform.io/providers/hashicorp/http/latest
+provider "http" {}
