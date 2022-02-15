@@ -10,6 +10,7 @@ variable "bucket_name" {
   default     = ""
 }
 
+# see https://docs.aws.amazon.com/AmazonS3/latest/API/API_Destination.html#AmazonS3-Type-Destination-StorageClass
 variable "bucket_storage_class" {
   type        = string
   description = "The class of storage used to store the object."
