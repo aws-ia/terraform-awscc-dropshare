@@ -14,8 +14,6 @@
 
 This section contains the input and output values of this module.
 
-To decrypt the Secret Access Key (part of the `dropshare_secret_key_decrypt_command` output), you will need to have access to Keybase.
-
 <!-- BEGIN_TF_DOCS -->
 ### Inputs
 
@@ -31,3 +29,12 @@ No inputs.
 | dropshare\_secret\_key | Encrypted Secret Key for Dropshare Connection. |
 | dropshare\_secret\_key\_decrypt\_command | Command to decrypt IAM Secret Access Key for Dropshare Connection. |
 <!-- END_TF_DOCS -->
+
+## Notes
+
+* For [aws_iam_access_key](https://www.terraform.io/docs/providers/aws/r/iam_access_key.html#encrypted_secret) Resources, the encrypted Access Key can be retrieved using the defined Terraform Outputs:
+
+```sh
+  terraform output dropshare_secret_key | \
+  base64 --decode | keybase pgp decrypt && echo
+```
