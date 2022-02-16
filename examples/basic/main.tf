@@ -47,6 +47,6 @@ output "dropshare_secret_key_decrypt_command" {
 
 # see https://www.terraform.io/language/values/outputs
 output "dropshare_region" {
-  description = "Domain Alias for Dropshare Connection."
-  value       = module.dropshare.domain_alias
+  description = "Region for Dropshare Connection."
+  value       = module.dropshare.region
 }
