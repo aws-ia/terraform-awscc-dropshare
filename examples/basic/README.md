@@ -38,3 +38,5 @@ No inputs.
   terraform output dropshare_secret_key | \
   base64 --decode | keybase pgp decrypt && echo
 ```
+
+Alternatively, a pre-rendered version of the command can be output using `terraform output dropshare_secret_key_decrypt_command`.

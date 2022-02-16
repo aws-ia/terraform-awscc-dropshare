@@ -12,7 +12,7 @@ module "dropshare" {
   }
 
   bucket_name               = "aws-ia-dropshare-aws"
-  keybase_user              = "aws-ia"
+  keybase_user              = "operatehappy"
   lock_policy_to_ip_address = true
   caller_ip_address         = "127.0.0.1/0"
   routed53_zone_id          = "Z022183919I9SRBSJMSTV"

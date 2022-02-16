@@ -49,7 +49,7 @@ variable "iam_group_path" {
 
 variable "iam_ip_address_retrieval_service" {
   type        = string
-  description = "URL for (Public) IP Address Retrieval Service"
+  description = "URL for (Public) IP Address Retrieval Service."
   default     = "https://checkip.amazonaws.com/"
 }
 
