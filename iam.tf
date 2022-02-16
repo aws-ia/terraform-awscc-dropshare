@@ -38,19 +38,12 @@ data "aws_iam_policy_document" "main" {
         local.ip_address_constraint
       ]
     }
-
-    principals {
-      type = "AWS"
-      identifiers = [
-        awscc_cloudfront_cloudfront_origin_access_identity.main.id
-      ]
-    }
   }
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy
 resource "aws_iam_user_policy" "main" {
-  policy = data.aws_iam_policy_document.main.json
-  name   = aws_s3_bucket.main.id
-  user   = aws_iam_user.main.name
+  policy      = data.aws_iam_policy_document.main.json
+  name_prefix = aws_s3_bucket.main.id
+  user        = aws_iam_user.main.name
 }
