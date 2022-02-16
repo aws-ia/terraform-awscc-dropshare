@@ -1,7 +1,7 @@
 variable "bucket_index_file" {
   type        = string
   description = "Path to template file to use as Index for Bucket."
-  default     = "templates/index.html"
+  default     = "files/index.html"
 }
 
 variable "bucket_name" {
