@@ -66,7 +66,39 @@ resource "awscc_cloudfront_cloudfront_origin_access_identity" "main" {
   }
 }
 
-## see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_distribution
+# see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_cache_policy
+resource "awscc_cloudfront_cache_policy" "main" {
+  cache_policy_config = {
+    comment     = "Default policy when CF compression is enabled"
+    default_ttl = 86400
+    max_ttl     = 31536000
+    min_ttl     = 1
+    name        = "Managed-CachingOptimized"
+
+    # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_cache_policy#nested-schema-for-cache_policy_configparameters_in_cache_key_and_forwarded_to_origin
+    parameters_in_cache_key_and_forwarded_to_origin = {
+      cookies_config = {
+        cookie_behavior = "none"
+      }
+
+      enable_accept_encoding_brotli = true
+      enable_accept_encoding_gzip   = true
+
+      # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_cache_policy#nested-schema-for-cache_policy_configparameters_in_cache_key_and_forwarded_to_originheaders_config
+      headers_config = {
+        header_behavior = "none"
+        header          = []
+      }
+
+      # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_cache_policy#nested-schema-for-cache_policy_configparameters_in_cache_key_and_forwarded_to_originquery_strings_config
+      query_strings_config = {
+        query_string_behavior = "none"
+      }
+    }
+  }
+}
+
+# see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_distribution
 resource "awscc_cloudfront_distribution" "main" {
   distribution_config = {
     aliases = [
