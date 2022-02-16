@@ -75,6 +75,7 @@ resource "awscc_cloudfront_distribution" "main" {
 
     comment = var.cloudfront_comment
 
+    # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_distribution#nestedatt--distribution_config--default_cache_behavior
     default_cache_behavior = {
       allowed_methods = [
         "HEAD",
@@ -91,38 +92,6 @@ resource "awscc_cloudfront_distribution" "main" {
 
       compress = true
 
-      # TODO
-      default_ttl = 300
-
-      #      field_level_encryption_id
-
-      # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_distribution#nested-schema-for-distribution_configdefault_cache_behaviorforwarded_values
-      forwarded_values = {
-        # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_distribution#nestedatt--distribution_config--default_cache_behavior--forwarded_values--cookies
-        cookies = {
-          forward           = null
-          whitelisted_names = []
-        }
-
-        headers                 = []
-        query_string            = false
-        query_string_cache_keys = []
-      }
-
-      #      function_associations = {
-      #
-      #      }
-      #
-      #      lambda_function_associations = {
-      #
-      #      }
-
-      #      max_ttl =
-      #      min_ttl =
-
-      #      realtime_log_config_arn
-      #      response_headers_policy_id
-
       smooth_streaming = false
       target_origin_id = aws_s3_bucket.main.bucket_regional_domain_name
       #      trusted_key_groups
@@ -131,9 +100,12 @@ resource "awscc_cloudfront_distribution" "main" {
     }
 
     default_root_object = basename(var.bucket_index_file)
+    default_ttl         = 300
     enabled             = true
     http_version        = "http2"
     ipv6_enabled        = true
+    max_ttl             = 86400
+    min_ttl             = 60
 
     origins = [
       {
