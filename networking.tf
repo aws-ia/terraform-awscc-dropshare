@@ -114,8 +114,7 @@ resource "awscc_cloudfront_distribution" "main" {
         "GET",
       ]
 
-      # TODO
-      cache_policy_id = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+      cache_policy_id = awscc_cloudfront_cache_policy.main.id
 
       cached_methods = [
         "HEAD",
@@ -170,19 +169,6 @@ resource "awscc_cloudfront_distribution" "main" {
     }
   }
 }
-
-# see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_cache_policy
-#resource "awscc_cloudfront_cache_policy" "main" {
-#  cache_policy_config = {
-#    default_ttl                                     = ""
-#    max_ttl                                         = ""
-#    min_ttl                                         = ""
-#    name                                            = "TODO"
-#    parameters_in_cache_key_and_forwarded_to_origin = {
-#      cookies_config =
-#    }
-#  }
-#}
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
 resource "aws_route53_record" "a" {
