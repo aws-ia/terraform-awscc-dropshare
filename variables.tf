@@ -80,6 +80,9 @@ variable "caller_ip_address" {
   default     = ""
 }
 
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region
+data "aws_region" "current" {}
+
 # retrieve caller's public IP address by querying remote service
 # see `Notes` in `README.md` for security implications
 # see https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http

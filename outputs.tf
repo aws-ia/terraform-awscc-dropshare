@@ -1,3 +1,8 @@
+output "access_key_id" {
+  description = "IAM Access Key."
+  value       = aws_iam_access_key.main.id
+}
+
 output "bucket_id" {
   description = "S3 Bucket ARN."
   value       = aws_s3_bucket.main.arn
@@ -8,9 +13,9 @@ output "bucket_name" {
   value       = aws_s3_bucket.main.id
 }
 
-output "access_key_id" {
-  description = "IAM Access Key."
-  value       = aws_iam_access_key.main.id
+output "region" {
+  description = "S3 Bucket Region."
+  value       = data.aws_region.current.name
 }
 
 output "secret_key" {

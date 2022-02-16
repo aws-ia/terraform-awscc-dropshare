@@ -62,6 +62,7 @@ For examples, see the [/examples](https://github.com/aws-ia/terraform-module-aws
 | bucket\_id | S3 Bucket ARN. |
 | bucket\_name | S3 Bucket Name. |
 | domain\_alias | Domain Alias for CloudFront Distribution. |
+| region | Region. |
 | secret\_key | (encrypted) IAM Secret Key. |
 | secret\_key\_decrypt\_command\_append | Appended part of Command to decrypt IAM Secret Key. |
 | secret\_key\_decrypt\_command\_prepend | Prepended part of Command to decrypt IAM Secret Key. |
