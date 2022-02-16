@@ -11,6 +11,7 @@ resource "aws_iam_access_key" "main" {
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document
+# also see https://learn.hashicorp.com/tutorials/terraform/aws-iam-policy#refactor-your-policy
 data "aws_iam_policy_document" "main" {
   statement {
     sid    = "0"

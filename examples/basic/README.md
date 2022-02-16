@@ -35,8 +35,8 @@ No inputs.
 * For [aws_iam_access_key](https://www.terraform.io/docs/providers/aws/r/iam_access_key.html#encrypted_secret) Resources, the encrypted Access Key can be retrieved using the defined Terraform Outputs:
 
 ```sh
-  terraform output dropshare_secret_key | \
+  terraform output secret_key | \
   base64 --decode | keybase pgp decrypt && echo
 ```
 
-Alternatively, a pre-rendered version of the command can be output using `terraform output dropshare_secret_key_decrypt_command`.
+Alternatively, a pre-rendered version of the command can be output using `terraform output secret_key_decrypt_command`.
