@@ -41,25 +41,27 @@ resource "aws_s3_bucket_public_access_block" "example" {
 }
 
 ## see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration
-#resource "aws_s3_bucket_lifecycle_configuration" "main" {
-#  bucket = aws_s3_bucket.main.id
-#
-#  rule {
-#    id = "default"
-#
-#    expiration {
-#      days = 90
-#    }
-#
-#    status = "Enabled"
-#
-#    # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/s3_bucket#nested-schema-for-lifecycle_configurationrulestransitions
-#    transition {
-#      days          = 0
-#      storage_class = var.bucket_storage_class
-#    }
-#  }
-#}
+resource "aws_s3_bucket_lifecycle_configuration" "main" {
+  bucket = aws_s3_bucket.main.id
+
+  rule {
+    id = "default"
+
+    # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration#filter
+    filter {
+      object_size_greater_than = 0
+      object_size_less_than    = 0
+    }
+
+    status = "Enabled"
+
+    # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/s3_bucket#nested-schema-for-lifecycle_configurationrulestransitions
+    transition {
+      days          = 30
+      storage_class = var.bucket_storage_class
+    }
+  }
+}
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
 #resource "aws_s3_object" "main" {
