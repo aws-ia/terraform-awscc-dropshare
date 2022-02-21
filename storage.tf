@@ -64,15 +64,15 @@ resource "aws_s3_bucket_lifecycle_configuration" "main" {
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
-#resource "aws_s3_object" "main" {
-#  bucket = aws_s3_bucket.main.arn
-#
-#  # separate file name (and extension) from full path of the index file
-#  key = basename("${path.module}/${var.bucket_index_file}")
-#
-#  # generate an acceptable ETag for the index file
-#  etag = filemd5("${path.module}/${var.bucket_index_file}")
-#
-#  content_type = "text/html"
-#  source       = "${path.module}/${var.bucket_index_file}"
-#}
+resource "aws_s3_object" "main" {
+  bucket = aws_s3_bucket.main.arn
+
+  # separate file name (and extension) from full path of the index file
+  key = basename("${path.module}/${var.bucket_index_file}")
+
+  # generate an acceptable ETag for the index file
+  etag = filemd5("${path.module}/${var.bucket_index_file}")
+
+  content_type = "text/html"
+  source       = "${path.module}/${var.bucket_index_file}"
+}
