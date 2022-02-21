@@ -12,6 +12,8 @@ jobs:
       # see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategyfail-fast
       fail-fast: false
       matrix:
+        # The Snyk IaC GitHub Action currently only supports single files (via the `file` attribute in `with`).
+        # To work around this, a GitHub Actions Strategy is used to provide the files that should be tested.
         terraform_files:
           - iam.tf
           - main.tf
@@ -20,6 +22,9 @@ jobs:
           - storage.tf
           - terraform.tf
           - variables.tf
+          - examples/basic/main.tf
+          - examples/basic/providers.tf
+          - examples/basic/terraform.tf
 
     steps:
       - name: Checkout Repository
