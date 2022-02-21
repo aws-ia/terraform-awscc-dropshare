@@ -82,6 +82,12 @@ Should you wish to provide a different IP retrieval service, you can update the 
 
 The [HTTP data source](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) may display a warning if the underlying retrieval services not expose a Content-Type that is compatible with the data source.
 
+### Code Linting
+
+This repository makes use of [GitHub Actions](https://github.com/aws-ia/terraform-awscc-dropshare/tree/main/.github/workflows) to provide support for a variety of linting tools.
+
+To use [Snyk IaC](https://snyk.io/product/infrastructure-as-code-security/) scanning, a GitHub Actions Secret named `SNYK_TOKEN` must be [created](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository).
+
 ## Author Information
 
 This repository is maintained by the contributors listed on [GitHub](https://github.com/aws-ia/terraform-module-awscc-dropshare/graphs/contributors).

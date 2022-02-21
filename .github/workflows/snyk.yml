@@ -11,6 +11,8 @@ jobs:
       - name: Check Code
         uses: snyk/actions/iac@master
         env:
+          # see https://github.com/snyk/actions#getting-your-snyk-token
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
+          # see https://docs.snyk.io/products/snyk-infrastructure-as-code/snyk-cli-for-infrastructure-as-code/iac-ignores-using-the-.snyk-policy-file#policy-flags-and-policy-file-notes
           args: --policy-path=.snyk
