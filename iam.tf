@@ -21,7 +21,6 @@ data "aws_iam_policy_document" "main" {
       "s3:PutObject",
       "s3:GetObjectAcl",
       "s3:GetObject",
-      "s3:ListAllMyBuckets",
       "s3:ListBucket",
       "s3:ListObjects",
       "s3:DeleteObject"
