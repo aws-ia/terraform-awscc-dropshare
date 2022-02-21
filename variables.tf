@@ -97,7 +97,7 @@ data "http" "caller_public_ip_address" {
 
 locals {
   # use `var.caller_ip_address` if provided, else use caller's public IP address
-  caller_ip_address = var.caller_ip_address != "" ? var.caller_ip_address : tostring(data.http.caller_public_ip_address.body)
+  caller_ip_address = var.caller_ip_address != "" ? var.caller_ip_address : tostring(split("\n", data.http.caller_public_ip_address.body)[0])
 
   # if `var.lock_policy_to_ip_address` is set to true, set to user-provided IP address
   ip_address_constraint = var.lock_policy_to_ip_address ? local.caller_ip_address : "0.0.0.0/0"

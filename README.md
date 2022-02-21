@@ -80,6 +80,8 @@ Allowing a remote service to provide a string for constraining IAM Access to a s
 
 Should you wish to provide a different IP retrieval service, you can update the `iam_ip_address_retrieval_service` variable with the URL to a service you trust. See [variables.tf](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/variables.tf) and [iam.tf](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/iam.tf) for more information.
 
+The [HTTP data source](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) may display a warning if the underlying retrieval services not expose a Content-Type that is compatible with the data source.
+
 ## Author Information
 
 This repository is maintained by the contributors listed on [GitHub](https://github.com/aws-ia/terraform-module-awscc-dropshare/graphs/contributors).
