@@ -8,6 +8,7 @@
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Usage](#usage)
+    - [Dropshare](#dropshare)
     - [Inputs](#inputs)
     - [Outputs](#outputs)
   - [Notes](#notes)
@@ -31,9 +32,36 @@
 
 ## Usage
 
-This section contains the input and output values of this module.
+This section contains the input and output values of this module as well as information on how to configure [Dropshare](https://dropshare.app/).
 
-For examples, see the [/examples](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/examples/) directory.
+### Dropshare
+
+To configure Dropshare, start from `basic` example available in [./examples/basic](https://github.com/ksatirli/terraform-awscc-dropshare/blob/main/examples/basic).
+
+Modify the input values `bucket_name`, `keybase_user`, `routed53_zone_id` and `route53_record_subdomain` to reflect your infrastructure.
+
+Next, carry out a [Terraform run](https://www.terraform.io/cli/run), executing the `terraform plan`, and `terraform apply`.
+
+When the [apply](https://www.terraform.io/cli/run#applying) process finishes, Terraform will present the required [outputs](https://www.terraform.io/language/values/outputs) to configure Dropshare:
+
+```shell
+Outputs:
+
+access_key_id              = "AKIAIOSFODNN7EXAMPLE"
+bucket_name                = "aws-ia-dropshare"
+domain_alias               = "aws-ia-dropshare.svcs.dev"
+region                     = "us-west-1"
+secret_key                 = "wcB...A=="
+secret_key_decrypt_command = "terraform output -raw secret_key | base64 --decode | keybase pgp decrypt"
+```
+
+> Note that the `secret_key` output is the _encrypted_ value of the AWS IAM Secret Access Key. To decrypt it, run the decryption command presented in the `secret_key_decrypt_command` output.
+
+Using the outputs, you can configure a Dropshare Connection for AWS S3:
+
+![Dropshare Configuration](files/dropshare_configuration.png)
+
+For additional examples, see the [/examples](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/examples/) directory.
 
 <!-- BEGIN_TF_DOCS -->
 ### Inputs
