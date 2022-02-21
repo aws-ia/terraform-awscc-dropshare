@@ -28,7 +28,7 @@ provider "aws" {
   # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication
 
   # set this to the region you want to create the S3 Bucket in
-  region = "us-west-1"
+  region = "us-east-1"
 
   # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs#default_tags
   # also see https://learn.hashicorp.com/tutorials/terraform/aws-default-tags

@@ -14,7 +14,7 @@ module "dropshare" {
     aws.certificates = aws.certificates
   }
 
-  bucket_name               = "aws-ia-dropshare-aws"
+  bucket_name               = "aws-ia-dropshare"
   keybase_user              = "operatehappy"
   lock_policy_to_ip_address = true
   routed53_zone_id          = "Z022183919I9SRBSJMSTV"

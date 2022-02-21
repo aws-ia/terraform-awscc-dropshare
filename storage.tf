@@ -45,14 +45,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "main" {
   bucket = aws_s3_bucket.main.id
 
   rule {
-    id = "default"
-
-    # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration#filter
-    filter {
-      object_size_greater_than = 0
-      object_size_less_than    = 0
-    }
-
+    id     = "default"
     status = "Enabled"
 
     # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/s3_bucket#nested-schema-for-lifecycle_configurationrulestransitions
