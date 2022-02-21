@@ -7,7 +7,26 @@ on:
 jobs:
   snyk:
     runs-on: ubuntu-latest
+
+    strategy:
+      # see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategyfail-fast
+      fail-fast: false
+      matrix:
+        terraform_files:
+          - iam.tf
+          - main.tf
+          - networking.tf
+          - outputs.tf
+          - storage.tf
+          - terraform.tf
+          - variables.tf
+
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
       # see https://github.com/snyk/actions/tree/master/iac
       - name: Lint Code with Snyk
         uses: snyk/actions/iac@master
@@ -15,5 +34,6 @@ jobs:
           # see https://github.com/snyk/actions#getting-your-snyk-token
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
+          file: ${{ matrix.terraform_files }}
           # see https://docs.snyk.io/products/snyk-infrastructure-as-code/snyk-cli-for-infrastructure-as-code/iac-ignores-using-the-.snyk-policy-file#policy-flags-and-policy-file-notes
           args: --policy-path=.snyk
