@@ -1,6 +1,6 @@
 # see https://www.terraform.io/language/modules/syntax#calling-a-child-module
 module "dropshare" {
-  # the `source`  paramter of this example uses a local path to allow
+  # the `source`  parameter of this example uses a local path to allow
   # for a better testing experience; for actual module usage, consider
   # replacing `../..` with `"aws-ia/dropshare/awscc"`
   # see https://www.terraform.io/language/modules/sources#local-paths
@@ -33,7 +33,7 @@ output "access_key_id" {
   value       = module.dropshare.access_key_id
 }
 
-# update the `value` attronite of the `secret_key_decrypt_command`
+# update the `value` attribute of the `secret_key_decrypt_command`
 # output if the identifier of the `secret_key` output is changed
 # see https://www.terraform.io/language/values/outputs
 output "secret_key" {
