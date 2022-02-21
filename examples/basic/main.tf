@@ -1,5 +1,8 @@
 # see https://www.terraform.io/language/modules/syntax#calling-a-child-module
 module "dropshare" {
+  # the `source`  paramter of this example uses a local path to allow
+  # for a better testing experience; for actual module usage, consider
+  # replacing `../..` with `"aws-ia/dropshare/awscc"`
   # see https://www.terraform.io/language/modules/sources#local-paths
   source = "../.."
 
