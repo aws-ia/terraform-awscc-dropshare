@@ -1,0 +1,16 @@
+---
+name: "Code Quality: Snyk IaC"
+
+on:
+  pull_request:
+
+jobs:
+  snyk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Code
+        uses: snyk/actions/iac@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --policy-path=.snyk

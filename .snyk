@@ -1,0 +1,40 @@
+version: v1.22.1
+
+# see https://docs.snyk.io/products/snyk-infrastructure-as-code/snyk-cli-for-infrastructure-as-code/iac-ignores-using-the-.snyk-policy-file
+ignore:
+  # see https://snyk.io/security-rules/SNYK-CC-TF-4
+  SNYK-CC-TF-4:
+    - 'storage.tf > input > resource > aws_s3_bucket[main]':
+        reason: Contents of S3 Bucket are meant for public consumption, encryption not required.
+
+  # see https://snyk.io/security-rules/SNYK-CC-TF-45
+  SNYK-CC-TF-45:
+    - 'storage.tf > input > resource > aws_s3_bucket[main] > logging':
+        reason: Contents of S3 Bucket are meant for public consumption, logging not required.
+
+  # see https://snyk.io/security-rules/SNYK-CC-TF-97
+  SNYK-CC-TF-97:
+    - 'storage.tf > resource > aws_s3_bucket_public_access_block[main] > ignore_public_acls':
+        reason: Contents of S3 Bucket are meant for public consumption, public access is intentional.
+
+  # see https://snyk.io/security-rules/SNYK-CC-TF-97
+  SNYK-CC-TF-98:
+    - 'storage.tf > resource > aws_s3_bucket_public_access_block[main] > restrict_public_buckets':
+        reason: Contents of S3 Bucket are meant for public consumption, public access is intentional.
+
+  # see https://snyk.io/security-rules/SNYK-CC-TF-116
+  SNYK-CC-TF-116:
+    - 'iam.tf > resource > aws_iam_user_policy[main]':
+        reason: Policy is user-specific and therefore attached directly (increase of management overhead is negligible due to use of Terraform).
+
+  # see https://snyk.io/security-rules/SNYK-CC-TF-124
+  SNYK-CC-TF-124:
+    - 'storage.tf > resource > aws_s3_bucket[main] > versioning > enabled':
+        reason: Contents of S3 Bucket are meant for public consumption, versioning not required.
+
+  # see https://snyk.io/security-rules/SNYK-CC-TF-127
+  SNYK-CC-TF-127:
+    - 'storage.tf > resource > aws_s3_bucket[main] > versioning > mfa_delete':
+        reason: Contents of S3 Bucket are meant for public consumption, MFA-Delete not required (or supported by Dropshare.app).
+
+patch: {}
