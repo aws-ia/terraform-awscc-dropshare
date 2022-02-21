@@ -25,7 +25,7 @@ provider "awscc" {
 # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs
 provider "aws" {
   # configuration for this provider is handled through environment variables
-  # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs#environment-variables
+  # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication
 
   # set this to the region you want to create the S3 Bucket in
   region = "us-west-1"
@@ -46,8 +46,8 @@ provider "aws" {
   alias  = "certificates"
   region = "us-east-1"
 
-  # configuration for this provider is handled through environment variables
-  # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs#environment-variables
+  # configuration for this provider is handled transparently and not hard-coded
+  # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication
 
   # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs#default_tags
   # also see https://learn.hashicorp.com/tutorials/terraform/aws-default-tags
