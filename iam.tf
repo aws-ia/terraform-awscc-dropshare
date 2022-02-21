@@ -47,6 +47,6 @@ data "aws_iam_policy_document" "main" {
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy
 resource "aws_iam_user_policy" "main" {
   policy      = data.aws_iam_policy_document.main.json
-  name_prefix = aws_s3_bucket.main.id
+  name_prefix = "${aws_s3_bucket.main.id}-"
   user        = aws_iam_user.main.name
 }
