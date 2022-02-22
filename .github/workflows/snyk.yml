@@ -1,5 +1,5 @@
 ---
-name: "Code Quality: Snyk IaC"
+name: "Security Scan: Snyk IaC"
 
 on:
   pull_request:

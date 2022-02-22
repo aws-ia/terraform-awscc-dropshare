@@ -1,5 +1,5 @@
 ---
-name: "Code Quality: tfsec"
+name: "Security Scan: tfsec"
 
 on:
   pull_request:
