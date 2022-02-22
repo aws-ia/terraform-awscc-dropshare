@@ -18,15 +18,38 @@ data "aws_iam_policy_document" "main" {
     effect = "Allow"
 
     actions = [
-      "s3:PutObject",
-      "s3:GetObjectAcl",
-      "s3:GetObject",
+      "s3:GetBucketLocation",
       "s3:ListBucket",
-      "s3:DeleteObject"
     ]
 
     resources = [
       aws_s3_bucket.main.arn,
+    ]
+
+    # see https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceip
+    condition {
+      test     = "IpAddress"
+      variable = "aws:SourceIp"
+
+      values = [
+        local.ip_address_constraint
+      ]
+    }
+  }
+
+  statement {
+    sid    = "1"
+    effect = "Allow"
+
+    actions = [
+      "s3:GetObjectAcl",
+      "s3:GetObject",
+      "s3:DeleteObject",
+      "s3:PutObject",
+      "s3:PutObjectAcl",
+    ]
+
+    resources = [
       "${aws_s3_bucket.main.arn}/*"
     ]
 
