@@ -121,7 +121,10 @@ resource "awscc_cloudfront_distribution" "main" {
         "GET",
       ]
 
-      compress = true
+      compress    = true
+      default_ttl = 300
+      max_ttl     = 86400
+      min_ttl     = 60
 
       smooth_streaming = false
       target_origin_id = aws_s3_bucket.main.bucket_regional_domain_name
@@ -131,12 +134,9 @@ resource "awscc_cloudfront_distribution" "main" {
     }
 
     default_root_object = basename(var.bucket_index_file)
-    default_ttl         = 300
     enabled             = true
     http_version        = "http2"
     ipv6_enabled        = true
-    max_ttl             = 86400
-    min_ttl             = 60
 
     origins = [
       {
