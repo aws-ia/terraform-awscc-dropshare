@@ -1,0 +1,18 @@
+---
+
+exclude:
+  # Contents of S3 Bucket are meant for public consumption, logging not required.
+  - aws-s3-enable-bucket-logging
+
+  # Contents of S3 Bucket are meant for public consumption, encryption not required.
+  - aws-s3-enable-bucket-encryption
+  - aws-s3-encryption-customer-key
+
+  # Contents of S3 Bucket are meant for public consumption, versioning not required.
+  - aws-s3-enable-versioning
+
+  # Contents of S3 Bucket are meant for public consumption, public access is intentional.
+  - aws-s3-ignore-public-acls
+
+  # Contents of S3 Bucket are meant for public consumption, public access is intentional.
+  - aws-s3-no-public-buckets
