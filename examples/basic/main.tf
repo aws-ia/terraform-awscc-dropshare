@@ -15,7 +15,7 @@ module "dropshare" {
   }
 
   bucket_name               = "aws-ia-dropshare"
-  keybase_user              = "operatehappy"
+  keybase_user              = "aws-ia"
   lock_policy_to_ip_address = true
   routed53_zone_id          = "Z022183919I9SRBSJMSTV"
   route53_record_subdomain  = "aws-ia-dropshare-aws"
