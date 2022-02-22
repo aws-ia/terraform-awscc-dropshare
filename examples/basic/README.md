@@ -12,7 +12,9 @@
 
 ## Usage
 
-This section contains the input and output values of this module.
+See [main.tf](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/examples/basic/main.tf) for an example of how to use this module with a _basic_ configuration.
+
+This section contains the input and output values of this example.
 
 <!-- BEGIN_TF_DOCS -->
 ### Inputs
