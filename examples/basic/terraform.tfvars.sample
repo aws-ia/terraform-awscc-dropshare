@@ -1,0 +1,4 @@
+bucket_name              = "aws-ia-dropshare"
+keybase_user             = "aws-ia"
+route53_zone_id          = "Z3P5QSUBK4POTI"
+route53_record_subdomain = "aws-ia-dropshare"
