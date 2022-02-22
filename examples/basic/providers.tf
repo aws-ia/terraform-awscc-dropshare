@@ -7,12 +7,12 @@ provider "awscc" {
   #  default_tags {
   #    tags = {
   #      terraform_managed = "true"
-  #      terraform_module  = "aws-ia/terraform-module-awscc-dropshare"
+  #      terraform_module  = "aws-ia/terraform-awscc-dropshare"
   #    }
   #  }
 
   user_agent = [{
-    product_name    = "terraform-module-awscc-dropshare"
+    product_name    = "terraform-awscc-dropshare"
     product_version = "0.1.0"
 
     # the ID can be retrieved using `gh`: `gh api repos/aws-ia/terraform-awscc-dropshare | jq .id`
@@ -35,7 +35,7 @@ provider "aws" {
   default_tags {
     tags = {
       terraform_managed = "true"
-      terraform_module  = "aws-ia/terraform-module-awscc-dropshare"
+      terraform_module  = "aws-ia/terraform-awscc-dropshare"
     }
   }
 }
@@ -54,7 +54,7 @@ provider "aws" {
   default_tags {
     tags = {
       terraform_managed = "true"
-      terraform_module  = "aws-ia/terraform-module-awscc-dropshare"
+      terraform_module  = "aws-ia/terraform-awscc-dropshare"
     }
   }
 }

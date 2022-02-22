@@ -61,7 +61,7 @@ Using the outputs, you can configure a Dropshare Connection for AWS S3:
 
 ![Dropshare Configuration](files/dropshare_configuration.png)
 
-For additional examples, see the [/examples](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/examples/) directory.
+For additional examples, see the [/examples](https://github.com/aws-ia/terraform-awscc-dropshare/blob/main/examples/) directory.
 
 <!-- BEGIN_TF_DOCS -->
 ### Inputs
@@ -102,11 +102,11 @@ This section contains notes for this module.
 
 ### Public IP Retrieval Services
 
-In [iam.tf](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/iam.tf), an [HTTP data source](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) is used to retrieve the caller's public IP address. This IP address is then used as a constraint for the module-created IAM policy.
+In [iam.tf](https://github.com/aws-ia/terraform-awscc-dropshare/blob/main/iam.tf), an [HTTP data source](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) is used to retrieve the caller's public IP address. This IP address is then used as a constraint for the module-created IAM policy.
 
 Allowing a remote service to provide a string for constraining IAM Access to a specific source IP provides a limited, but non-zero security concern.
 
-Should you wish to provide a different IP retrieval service, you can update the `iam_ip_address_retrieval_service` variable with the URL to a service you trust. See [variables.tf](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/variables.tf) and [iam.tf](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/iam.tf) for more information.
+Should you wish to provide a different IP retrieval service, you can update the `iam_ip_address_retrieval_service` variable with the URL to a service you trust. See [variables.tf](https://github.com/aws-ia/terraform-awscc-dropshare/blob/main/variables.tf) and [iam.tf](https://github.com/aws-ia/terraform-awscc-dropshare/blob/main/iam.tf) for more information.
 
 The [HTTP data source](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) may display a warning if the underlying retrieval services not expose a Content-Type that is compatible with the data source.
 
@@ -118,7 +118,7 @@ To use [Snyk IaC](https://snyk.io/product/infrastructure-as-code-security/) scan
 
 ## Author Information
 
-This repository is maintained by the contributors listed on [GitHub](https://github.com/aws-ia/terraform-module-awscc-dropshare/graphs/contributors).
+This repository is maintained by the contributors listed on [GitHub](https://github.com/aws-ia/terraform-awscc-dropshare/graphs/contributors).
 
 ## License
 

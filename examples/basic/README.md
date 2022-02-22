@@ -12,7 +12,7 @@
 
 ## Usage
 
-See [main.tf](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/examples/basic/main.tf) and [terraform.tfvars.sample](https://github.com/aws-ia/terraform-module-awscc-dropshare/blob/main/examples/basic/terraform.tfvars.sample) for an example of how to use this module with a _basic_ configuration.
+See [main.tf](https://github.com/aws-ia/terraform-awscc-dropshare/blob/main/examples/basic/main.tf) and [terraform.tfvars.sample](https://github.com/aws-ia/terraform-awscc-dropshare/blob/main/examples/basic/terraform.tfvars.sample) for an example of how to use this module with a _basic_ configuration.
 
 This section contains the input and output values of this example.
 
