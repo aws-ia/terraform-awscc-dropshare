@@ -6,7 +6,7 @@ variable "bucket_index_file" {
 
 variable "bucket_name" {
   type        = string
-  description = "Name of the S3 Bucket."
+  description = "Name of the S3 Bucket. When left empty, a random name will be generated."
   default     = ""
 }
 
