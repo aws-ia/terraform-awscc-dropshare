@@ -16,7 +16,7 @@ jobs:
 
       # see https://aquasecurity.github.io/tfsec/v0.63.1/getting-started/configuration/github-actions/github-action/
       - name: Lint Code with tfsec
-        uses: tfsec/tfsec-sarif-action@main
+        uses: aquasecurity/tfsec-sarif-action@master
         with:
           config_file: tfsec.yml
           sarif_file: tfsec.sarif
