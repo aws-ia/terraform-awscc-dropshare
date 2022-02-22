@@ -63,3 +63,10 @@ repos:
         name: Run `tflint`
         args:
           - "--args=--config=.tflint.hcl"
+
+      # see https://github.com/antonbabenko/pre-commit-terraform#terraform_tfsec
+      - id: terraform_tfsec
+        name: Run `tfsec` against `examples/basic`
+        files: "examples/basic"
+        args:
+          - --args= --config-file=__GIT_WORKING_DIR__/tfsec.yml
