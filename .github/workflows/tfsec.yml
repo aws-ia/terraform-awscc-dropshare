@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  snyk:
+  tfsec:
     runs-on: ubuntu-latest
 
     steps:
