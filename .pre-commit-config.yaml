@@ -62,7 +62,7 @@ repos:
       - id: terraform_tflint
         name: Run `tflint`
         args:
-          - "--args=--config=.tflint.hcl"
+          - "--args=--config=__GIT_WORKING_DIR__/.tflint.hcl"
 
       # see https://github.com/antonbabenko/pre-commit-terraform#terraform_tfsec
       - id: terraform_tfsec
