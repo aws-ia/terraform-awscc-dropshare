@@ -42,3 +42,10 @@ jobs:
           file: ${{ matrix.terraform_files }}
           # see https://docs.snyk.io/products/snyk-infrastructure-as-code/snyk-cli-for-infrastructure-as-code/iac-ignores-using-the-.snyk-policy-file#policy-flags-and-policy-file-notes
           args: --policy-path=.snyk
+          sarif: true
+
+      # see https://github.com/github/codeql-action/tree/main/upload-sarif
+      - name: Upload results to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: snyk.sarif
