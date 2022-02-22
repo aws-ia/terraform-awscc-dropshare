@@ -28,8 +28,16 @@ repos:
 
       # see https://github.com/antonbabenko/pre-commit-terraform#terraform_docs
       - id: terraform_docs
+        name: Render documentation for Module
         args:
-          - "--args=--config=.terraform-docs.yaml"
+          - "--args=--config=.terraform-docs.yml"
+
+      # see https://github.com/antonbabenko/pre-commit-terraform#terraform_docs
+      - id: terraform_docs
+        name: Render documentation for `basic` example
+        files: examples/basic
+        args:
+          - "--args=--config=.terraform-docs.yml"
 
       # see https://github.com/antonbabenko/pre-commit-terraform#terraform_providers_lock
       - id: terraform_providers_lock
