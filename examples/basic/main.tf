@@ -14,11 +14,9 @@ module "dropshare" {
     aws.certificates = aws.certificates
   }
 
-  bucket_name               = "aws-ia-dropshare"
-  keybase_user              = "aws-ia"
+  bucket_name               = var.bucket_name
+  keybase_user              = var.keybase_user
   lock_policy_to_ip_address = true
-  routed53_zone_id          = "Z022183919I9SRBSJMSTV"
-  route53_record_subdomain  = "aws-ia-dropshare-aws"
 }
 
 # see https://www.terraform.io/language/values/outputs
