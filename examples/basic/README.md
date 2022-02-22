@@ -19,7 +19,12 @@ This section contains the input and output values of this example.
 <!-- BEGIN_TF_DOCS -->
 ### Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| bucket\_name | Name of S3 Bucket to create. | `string` | n/a | yes |
+| keybase\_user | Username of Keybase User to encrypt IAM Secret Key with. | `string` | n/a | yes |
+| route53\_record\_subdomain | Subdomain to create DNS Record with. This value is used in combination with `var.route53_zone_id`. | `string` | n/a | yes |
+| route53\_zone\_id | Route 53 Zone ID to create DNS Record in. | `string` | n/a | yes |
 
 ### Outputs
 
