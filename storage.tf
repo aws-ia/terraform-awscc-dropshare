@@ -35,9 +35,44 @@ resource "aws_s3_bucket_acl" "main" {
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block
 resource "aws_s3_bucket_public_access_block" "main" {
-  bucket              = aws_s3_bucket.main.id
-  block_public_acls   = true
-  block_public_policy = true
+  bucket = aws_s3_bucket.main.id
+
+  # public ACLs are required to allow sharing Bucket Objects via Dropshare
+  block_public_acls = false
+
+  # public Bucket Policies should not be blocked for this Bucket
+  block_public_policy = false
+}
+
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document
+data "aws_iam_policy_document" "bucket" {
+  statement {
+    sid    = "AllowCloudFrontOperationsOnBucketAndBucketObjects"
+    effect = "Deny"
+
+    actions = [
+      "s3:ListBucket",
+      "s3:GetObject"
+    ]
+
+    resources = [
+      aws_s3_bucket.main.arn,
+      "${aws_s3_bucket.main.arn}/*"
+    ]
+
+    principals {
+      type = "AWS"
+      identifiers = [
+        "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${awscc_cloudfront_cloudfront_origin_access_identity.main.id}"
+      ]
+    }
+  }
+}
+
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy
+resource "aws_s3_bucket_policy" "main" {
+  bucket = aws_s3_bucket.main.id
+  policy = data.aws_iam_policy_document.bucket.json
 }
 
 ## see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration
