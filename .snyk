@@ -12,6 +12,16 @@ ignore:
     - 'storage.tf > input > resource > aws_s3_bucket[main] > logging':
         reason: Contents of S3 Bucket are meant for public consumption, logging not required.
 
+  # see # see https://snyk.io/security-rules/SNYK-CC-TF-95
+  SNYK-CC-TF-95
+    - 'storage.tf > aws_s3_bucket_public_access_block[main] > block_public_acls'
+      reason: Contents of S3 Bucket are meant for public consumption, public access is intentional.
+
+  # see # see https://snyk.io/security-rules/SNYK-CC-TF-96
+  SNYK-CC-TF-96
+    - 'storage.tf > aws_s3_bucket_public_access_block[main] > block_public_policy'
+      reason: Contents of S3 Bucket are meant for public consumption, public access is intentional.
+
   # see https://snyk.io/security-rules/SNYK-CC-TF-97
   SNYK-CC-TF-97:
     - 'storage.tf > resource > aws_s3_bucket_public_access_block[main] > ignore_public_acls':
