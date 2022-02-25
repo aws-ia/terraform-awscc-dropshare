@@ -14,7 +14,7 @@ resource "aws_iam_access_key" "main" {
 # also see https://learn.hashicorp.com/tutorials/terraform/aws-iam-policy#refactor-your-policy
 data "aws_iam_policy_document" "main" {
   statement {
-    sid    = "0"
+    sid    = "AllowListOnBucket"
     effect = "Allow"
 
     actions = [
@@ -38,7 +38,7 @@ data "aws_iam_policy_document" "main" {
   }
 
   statement {
-    sid    = "1"
+    sid    = "AllowCRUDOnBucketObjects"
     effect = "Allow"
 
     actions = [
