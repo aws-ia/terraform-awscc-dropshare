@@ -63,6 +63,36 @@ data "aws_iam_policy_document" "main" {
       ]
     }
   }
+
+  # see https://aws.amazon.com/premiumsupport/knowledge-center/s3-bucket-policy-for-config-rule/
+  statement {
+    sid    = "DenyInsecureOperations"
+    effect = "Deny"
+
+    actions = [
+      "s3:*",
+    ]
+
+    resources = [
+      aws_s3_bucket.main.arn,
+      "${aws_s3_bucket.main.arn}/*"
+    ]
+
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+
+    # see https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceip
+    condition {
+      test     = "Bool"
+      variable = "aws:SecureTransport"
+
+      values = [
+        false
+      ]
+    }
+  }
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy
