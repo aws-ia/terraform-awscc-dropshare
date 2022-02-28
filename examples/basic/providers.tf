@@ -1,6 +1,6 @@
 # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs
 provider "awscc" {
-  # configuration for this provider is handled through environment variables
+  # configuration for this provider is handled transparently
   # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs#environment-variables
 
   # TODO @ksatirli: add default_tags, once supported
@@ -24,7 +24,7 @@ provider "awscc" {
 
 # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs
 provider "aws" {
-  # configuration for this provider is handled through environment variables
+  # configuration for this provider is handled transparently
   # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication
 
   # set this to the region you want to create the S3 Bucket in
