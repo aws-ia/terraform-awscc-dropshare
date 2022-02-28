@@ -93,6 +93,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "main" {
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
 resource "aws_s3_object" "index" {
+  # Boolean Toggle to define if Object should be created
+  count = var.create_index_file ? 1 : 0
+
   bucket = aws_s3_bucket.main.id
 
   # make object publicly readable
@@ -110,6 +113,9 @@ resource "aws_s3_object" "index" {
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
 resource "aws_s3_object" "robotstxt" {
+  # Boolean Toggle to define if Object should be created
+  count = var.create_robotstxt_file ? 1 : 0
+
   bucket = aws_s3_bucket.main.id
 
   # make object publicly readable

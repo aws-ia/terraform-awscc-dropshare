@@ -68,6 +68,18 @@ variable "cloudfront_zone_id" {
   default     = "Z2FDTNDATAQYW2"
 }
 
+variable "create_index_file" {
+  type        = bool
+  description = "Boolean Toggle to enable creation of Index File (`var.bucket_index_file`) in Bucket."
+  default     = true
+}
+
+variable "create_robotstxt_file" {
+  type        = bool
+  description = "Boolean Toggle to enable creation of Robots File (`var.bucket_robotstxt_file`) in Bucket."
+  default     = true
+}
+
 variable "iam_group_path" {
   type        = string
   description = "IAM Group Path for Service Accounts."

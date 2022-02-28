@@ -82,6 +82,8 @@ For additional examples, see the [/examples](https://github.com/aws-ia/terraform
 | cloudfront\_origin\_request\_policy\_id | ID of AWS-managed Origin Request Policy. | `string` | `"59781a5b-3903-41f3-afcb-af62929ccde1"` | no |
 | cloudfront\_response\_headers\_policy\_id | ID of AWS-managed Response Headers Policy. | `string` | `"67f7725c-6f97-4210-82d7-5512b31e9d03"` | no |
 | cloudfront\_zone\_id | ID of the CloudFront Route53 Hosted Zone. | `string` | `"Z2FDTNDATAQYW2"` | no |
+| create\_index\_file | Boolean Toggle to enable creation of Index File (`var.bucket_index_file`) in Bucket. | `bool` | `true` | no |
+| create\_robotstxt\_file | Boolean Toggle to enable creation of Robots File (`var.bucket_robotstxt_file`) in Bucket. | `bool` | `true` | no |
 | iam\_group\_path | IAM Group Path for Service Accounts. | `string` | `"/services/"` | no |
 | iam\_ip\_address\_retrieval\_service | URL for (Public) IP Address Retrieval Service. | `string` | `"https://checkip.amazonaws.com/"` | no |
 | lock\_policy\_to\_ip\_address | Toggle to enable constraining of IAM Policy to user-provided IP Address. | `bool` | `true` | no |
