@@ -92,18 +92,35 @@ resource "aws_s3_bucket_lifecycle_configuration" "main" {
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
-resource "aws_s3_object" "main" {
+resource "aws_s3_object" "index" {
   bucket = aws_s3_bucket.main.id
 
   # make object publicly readable
   acl = "public-read"
 
-  # separate file name (and extension) from full path of the index file
+  # separate file name (and extension) from full path of the file
   key = basename("${path.module}/${var.bucket_index_file}")
 
-  # generate an acceptable ETag for the index file
+  # generate an acceptable ETag for the file
   etag = filemd5("${path.module}/${var.bucket_index_file}")
 
   content_type = "text/html"
   source       = "${path.module}/${var.bucket_index_file}"
+}
+
+# see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
+resource "aws_s3_object" "robotstxt" {
+  bucket = aws_s3_bucket.main.id
+
+  # make object publicly readable
+  acl = "public-read"
+
+  # separate file name (and extension) from full path of the file
+  key = basename("${path.module}/${var.bucket_robotstxt_file}")
+
+  # generate an acceptable ETag for the file
+  etag = filemd5("${path.module}/${var.bucket_robotstxt_file}")
+
+  content_type = "text/plain"
+  source       = "${path.module}/${var.bucket_robotstxt_file}"
 }

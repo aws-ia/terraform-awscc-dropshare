@@ -73,6 +73,7 @@ For additional examples, see the [/examples](https://github.com/aws-ia/terraform
 | routed53\_zone\_id | ID of the Route53 Hosted Zone. | `string` | n/a | yes |
 | bucket\_index\_file | Path to template file to use as Index for Bucket. | `string` | `"files/index.html"` | no |
 | bucket\_name | Name of the S3 Bucket. When left empty, a random name will be generated. | `string` | `""` | no |
+| bucket\_robotstxt\_file | Path to template file to use as `robots.txt` for Bucket. | `string` | `"files/robots.txt"` | no |
 | bucket\_storage\_class | The class of storage used to store the object. | `string` | `"ONEZONE_IA"` | no |
 | caller\_ip\_address | IP Address to constrain IAM Policy to. If left empty, this will be replaced with the caller's public IP address. | `string` | `""` | no |
 | cloudfront\_cache\_policy\_id | ID of AWS-managed Cache Policy. | `string` | `"658327ea-f89d-4fab-a63d-7e88639e58f6"` | no |

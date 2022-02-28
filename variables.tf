@@ -4,6 +4,12 @@ variable "bucket_index_file" {
   default     = "files/index.html"
 }
 
+variable "bucket_robotstxt_file" {
+  type        = string
+  description = "Path to template file to use as `robots.txt` for Bucket."
+  default     = "files/robots.txt"
+}
+
 variable "bucket_name" {
   type        = string
   description = "Name of the S3 Bucket. When left empty, a random name will be generated."
