@@ -60,4 +60,6 @@ provider "aws" {
 }
 
 # see https://registry.terraform.io/providers/hashicorp/http/latest
+# selectively disabling tflint for the `http` provider as `version` is set in `terraform.tf`
+# tflint-ignore: terraform_required_providers
 provider "http" {}
