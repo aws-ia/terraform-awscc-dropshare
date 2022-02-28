@@ -22,10 +22,30 @@ variable "bucket_storage_class" {
   }
 }
 
+# see https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-policies-list
+variable "cloudfront_cache_policy_id" {
+  type        = string
+  description = "ID of AWS-managed Cache Policy."
+  default     = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+}
+
+variable "cloudfront_comment" {
+  type        = string
+  description = "Comment to assign to CloudFront resources."
+  default     = "Terraform-managed Resource for Dropshare Connection"
+}
+
 variable "cloudfront_minimum_protocol_version" {
   type        = string
   description = "The minimum version of the TLS protocol that you want CloudFront to use for HTTPS connections."
   default     = "TLSv1.2_2021"
+}
+
+# see https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-response-headers-policies.html#managed-response-headers-policies-security
+variable "cloudfront_response_headers_policy_id" {
+  type        = string
+  description = "ID of AWS-managed Response Headers Policy."
+  default     = "67f7725c-6f97-4210-82d7-5512b31e9d03"
 }
 
 # see https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-aliastarget.html#aws-properties-route53-aliastarget-properties
@@ -33,12 +53,6 @@ variable "cloudfront_zone_id" {
   type        = string
   description = "ID of the CloudFront Route53 Hosted Zone."
   default     = "Z2FDTNDATAQYW2"
-}
-
-variable "cloudfront_comment" {
-  type        = string
-  description = "Comment to assign to CloudFront resources."
-  default     = "Terraform-managed Resource for Dropshare Connection"
 }
 
 variable "iam_group_path" {

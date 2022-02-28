@@ -67,13 +67,13 @@ resource "awscc_cloudfront_cloudfront_origin_access_identity" "main" {
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/cloudfront_cache_policy
-data "aws_cloudfront_cache_policy" "main" {
-  name = "Managed-CachingOptimized"
+data "awscc_cloudfront_cache_policy" "main" {
+  id = var.cloudfront_cache_policy_id
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/cloudfront_response_headers_policy
-data "aws_cloudfront_response_headers_policy" "main" {
-  name = "Managed-SecurityHeadersPolicy"
+data "awscc_cloudfront_response_headers_policy" "main" {
+  id = var.cloudfront_response_headers_policy_id
 }
 
 # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_distribution
@@ -92,7 +92,7 @@ resource "awscc_cloudfront_distribution" "main" {
         "GET",
       ]
 
-      cache_policy_id = data.aws_cloudfront_cache_policy.main.id
+      cache_policy_id = data.awscc_cloudfront_cache_policy.main.id
 
       cached_methods = [
         "HEAD",
@@ -104,7 +104,7 @@ resource "awscc_cloudfront_distribution" "main" {
       max_ttl     = 86400
       min_ttl     = 60
 
-      response_headers_policy_id = data.aws_cloudfront_response_headers_policy.main.id
+      response_headers_policy_id = data.awscc_cloudfront_response_headers_policy.main.id
 
       smooth_streaming = false
       target_origin_id = aws_s3_bucket.main.bucket_regional_domain_name
