@@ -48,7 +48,7 @@ resource "aws_s3_bucket_public_access_block" "main" {
 data "aws_iam_policy_document" "bucket" {
   statement {
     sid    = "AllowCloudFrontOperationsOnBucketAndBucketObjects"
-    effect = "Deny"
+    effect = "Allow"
 
     actions = [
       "s3:ListBucket",

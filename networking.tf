@@ -112,8 +112,8 @@ resource "awscc_cloudfront_distribution" "main" {
       origin_request_policy_id   = data.awscc_cloudfront_origin_request_policy.main.id
       response_headers_policy_id = data.awscc_cloudfront_response_headers_policy.main.id
 
-      smooth_streaming = false
-      target_origin_id = aws_s3_bucket.main.bucket_regional_domain_name
+      smooth_streaming       = false
+      target_origin_id       = aws_s3_bucket.main.bucket_regional_domain_name
       viewer_protocol_policy = "https-only"
     }
 
