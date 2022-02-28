@@ -64,7 +64,7 @@ secret_key_decrypt_command = "terraform output -raw secret_key | base64 --decode
 
 Using the outputs, you can configure a Dropshare Connection for AWS S3:
 
-![Dropshare Configuration](files/dropshare_configuration.png)
+![Dropshare Configuration](images/dropshare_configuration.png)
 
 For additional examples, see the [/examples](https://github.com/aws-ia/terraform-awscc-dropshare/blob/main/examples/) directory.
 
