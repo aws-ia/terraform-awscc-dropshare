@@ -40,8 +40,9 @@ resource "aws_s3_bucket_public_access_block" "main" {
   # public ACLs are required to allow sharing Bucket Objects via Dropshare
   block_public_acls = false
 
-  # public Bucket Policies should not be blocked for this Bucket
-  block_public_policy = false
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document
