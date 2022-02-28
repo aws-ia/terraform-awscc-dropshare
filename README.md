@@ -78,6 +78,7 @@ For additional examples, see the [/examples](https://github.com/aws-ia/terraform
 | cloudfront\_cache\_policy\_id | ID of AWS-managed Cache Policy. | `string` | `"658327ea-f89d-4fab-a63d-7e88639e58f6"` | no |
 | cloudfront\_comment | Comment to assign to CloudFront resources. | `string` | `"Terraform-managed Resource for Dropshare Connection"` | no |
 | cloudfront\_minimum\_protocol\_version | The minimum version of the TLS protocol that you want CloudFront to use for HTTPS connections. | `string` | `"TLSv1.2_2021"` | no |
+| cloudfront\_origin\_request\_policy\_id | ID of AWS-managed Origin Request Policy. | `string` | `"59781a5b-3903-41f3-afcb-af62929ccde1"` | no |
 | cloudfront\_response\_headers\_policy\_id | ID of AWS-managed Response Headers Policy. | `string` | `"67f7725c-6f97-4210-82d7-5512b31e9d03"` | no |
 | cloudfront\_zone\_id | ID of the CloudFront Route53 Hosted Zone. | `string` | `"Z2FDTNDATAQYW2"` | no |
 | iam\_group\_path | IAM Group Path for Service Accounts. | `string` | `"/services/"` | no |

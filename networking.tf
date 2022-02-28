@@ -71,6 +71,11 @@ data "awscc_cloudfront_cache_policy" "main" {
   id = var.cloudfront_cache_policy_id
 }
 
+# see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/data-sources/cloudfront_origin_request_policy
+data "awscc_cloudfront_origin_request_policy" "main" {
+  id = var.cloudfront_origin_request_policy_id
+}
+
 # see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/cloudfront_response_headers_policy
 data "awscc_cloudfront_response_headers_policy" "main" {
   id = var.cloudfront_response_headers_policy_id
@@ -104,6 +109,7 @@ resource "awscc_cloudfront_distribution" "main" {
       max_ttl     = 86400
       min_ttl     = 60
 
+      origin_request_policy_id   = data.awscc_cloudfront_origin_request_policy.main.id
       response_headers_policy_id = data.awscc_cloudfront_response_headers_policy.main.id
 
       smooth_streaming = false

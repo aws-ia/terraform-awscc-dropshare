@@ -41,6 +41,13 @@ variable "cloudfront_minimum_protocol_version" {
   default     = "TLSv1.2_2021"
 }
 
+# see https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html#managed-origin-request-policies-list
+variable "cloudfront_origin_request_policy_id" {
+  type        = string
+  description = "ID of AWS-managed Origin Request Policy."
+  default     = "59781a5b-3903-41f3-afcb-af62929ccde1"
+}
+
 # see https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-response-headers-policies.html#managed-response-headers-policies-security
 variable "cloudfront_response_headers_policy_id" {
   type        = string
