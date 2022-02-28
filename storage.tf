@@ -95,6 +95,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "main" {
 resource "aws_s3_object" "main" {
   bucket = aws_s3_bucket.main.id
 
+  # make object publicly readable
+  acl = "public-read"
+
   # separate file name (and extension) from full path of the index file
   key = basename("${path.module}/${var.bucket_index_file}")
 
