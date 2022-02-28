@@ -93,15 +93,15 @@ resource "awscc_cloudfront_distribution" "main" {
     # see https://registry.terraform.io/providers/hashicorp/awscc/latest/docs/resources/cloudfront_distribution#nestedatt--distribution_config--default_cache_behavior
     default_cache_behavior = {
       allowed_methods = [
-        "HEAD",
         "GET",
+        "HEAD",
       ]
 
       cache_policy_id = data.awscc_cloudfront_cache_policy.main.id
 
       cached_methods = [
-        "HEAD",
         "GET",
+        "HEAD",
       ]
 
       compress    = true
@@ -114,8 +114,6 @@ resource "awscc_cloudfront_distribution" "main" {
 
       smooth_streaming = false
       target_origin_id = aws_s3_bucket.main.bucket_regional_domain_name
-      #      trusted_key_groups
-      #      trusted_signers
       viewer_protocol_policy = "https-only"
     }
 
