@@ -1,0 +1,72 @@
+---
+
+fail_fast: true
+minimum_pre_commit_version: "2.6.0"
+
+repos:
+  - # see https://github.com/pre-commit/pre-commit-hooks
+    repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: check-added-large-files
+        name: Check for accidentally added Large Files
+
+      - id: check-case-conflict
+        name: Check for cross-OS File Name Case Conflicts
+
+      - id: check-merge-conflict
+        name: Check for Git Merge Conflicts
+
+      - id: check-vcs-permalinks
+        name: Check VCS Permalinks
+
+      - id: check-json
+        name: Validate JSON files
+
+      - id: check-yaml
+        name: Validate YAML files
+
+  - # see https://github.com/antonbabenko/pre-commit-terraform
+    repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.64.0
+    hooks:
+      # see https://github.com/antonbabenko/pre-commit-terraform#terraform_fmt
+      - id: terraform_fmt
+        name: Run `terraform fmt` recursively
+        args:
+          - --args=-recursive
+
+      # see https://github.com/antonbabenko/pre-commit-terraform#terraform_validate
+      - id: terraform_validate
+        name: Run `terraform validate` against `examples/basic`
+        files: examples/basic
+
+      # see https://github.com/antonbabenko/pre-commit-terraform#terraform_docs
+      - id: terraform_docs
+        name: Render documentation for Module
+        args:
+          - "--args=--config=.terraform-docs.yml"
+
+      # see https://github.com/antonbabenko/pre-commit-terraform#terraform_docs
+      - id: terraform_docs
+        name: Render documentation for `basic` example
+        files: examples/basic
+        args:
+          - "--args=--config=.terraform-docs.yml"
+
+      # see https://github.com/antonbabenko/pre-commit-terraform#terraform_providers_lock
+      - id: terraform_providers_lock
+        name: Run `terraform init` and `terraform providers lock`
+
+      # see https://github.com/antonbabenko/pre-commit-terraform#terraform_tflint
+      - id: terraform_tflint
+        name: Run `tflint`
+        args:
+          - "--args=--config=__GIT_WORKING_DIR__/.tflint.hcl"
+
+      # see https://github.com/antonbabenko/pre-commit-terraform#terraform_tfsec
+      - id: terraform_tfsec
+        name: Run `tfsec` against `examples/basic`
+        files: "examples/basic"
+        args:
+          - --args= --config-file=__GIT_WORKING_DIR__/tfsec.yml
