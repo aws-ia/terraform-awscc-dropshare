@@ -17,6 +17,9 @@ terraform {
     awscc = {
       source  = "hashicorp/awscc"
       version = ">= 0.13.0, < 0.14.0"
+      version = ">= 0.13.0"
+    }
+
     # see https://registry.terraform.io/providers/hashicorp/http/latest
     http = {
       source  = "hashicorp/http"
