@@ -4,6 +4,9 @@ name: "Code Quality: Super-Linter"
 on:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   superlinter:
     name: Super-Linter
