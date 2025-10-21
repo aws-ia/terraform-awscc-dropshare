@@ -4,6 +4,9 @@ name: "Security Scan: Snyk IaC"
 on:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   snyk:
     runs-on: ubuntu-latest
