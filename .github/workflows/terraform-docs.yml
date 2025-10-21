@@ -4,6 +4,9 @@ name: "Documentation: terraform-docs"
 on:
   pull_request:
 
+permissions:
+  contents: write
+
 jobs:
   docs:
     runs-on: ubuntu-latest
